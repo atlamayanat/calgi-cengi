@@ -355,13 +355,14 @@ export default function App() {
   useEffect(() => {
     const blockContext = (e: Event) => e.preventDefault();
     const blockKeys = (e: KeyboardEvent) => {
-      // F5, Ctrl+R: yenileme; Ctrl+W: pencereyi kapat; F11: tam-ekran çıkış; Alt+F4
+      // F5/Ctrl+R: yenileme; Ctrl+W: sekme kapat; F11: tam-ekran çıkış; Ctrl+P: yazdır; Alt+Home: ana sayfa
+      // NOT: Alt+F4 KASITLI olarak engellenmez — yetkili personelin klavyeden tek çıkış yoludur.
       const k = e.key;
       const ctrl = e.ctrlKey || e.metaKey;
       if (
         k === 'F5' || k === 'F11' ||
         (ctrl && (k === 'r' || k === 'R' || k === 'w' || k === 'W' || k === 'p' || k === 'P')) ||
-        (e.altKey && (k === 'F4' || k === 'Home'))
+        (e.altKey && k === 'Home')
       ) {
         e.preventDefault();
         e.stopPropagation();
